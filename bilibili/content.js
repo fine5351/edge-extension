@@ -143,24 +143,6 @@ async function clickShareButton() {
     const iframe = document.querySelector('iframe[name="dynmic-share"]');
     if (iframe) {
         console.log('iframe 已加載, iframe:', iframe);
-        chrome.runtime.sendMessage({ action: 'getIframeButtons' }, response => {
-            if (chrome.runtime.lastError) {
-                if (chrome.runtime.lastError.message === 'Could not establish connection. Receiving end does not exist.') {
-                    console.error('Error sending message: Receiving end does not exist. Please ensure the background script is running.');
-                    
-                } else {
-                    console.error('Error sending message:', chrome.runtime.lastError);
-                }
-                return;
-            }
-            if (response && response.success) {
-                response.buttons.forEach(button => {
-                    console.log('Button class:', button.className, 'Button name:', button.name);
-                });
-            } else {
-                console.log('無法獲取 iframe 按鈕');
-            }
-        });
     } else {
         console.log('未找到 iframe');
     }
