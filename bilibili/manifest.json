@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "B站自動互動",
+  "version": "1.0",
+  "description": "自動點讚、收藏和分享B站視頻",
+  "permissions": [
+    "activeTab",
+    "*://*.bilibili.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.bilibili.com/video/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
